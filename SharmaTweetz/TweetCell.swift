@@ -21,15 +21,19 @@ class TweetCell: UITableViewCell {
             let user = tweet.user as User!
             userImageView.setImageWithURL(user.profileImageUrl)
             nameLabel.text = user.name
-            usernameLabel.text = user.screenname
+            usernameLabel.text = "@" + user.screenname!
             tweetLabel.text = tweet.text
         }
     }
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        tweetLabel.preferredMaxLayoutWidth = tweetLabel.frame.size.width
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        tweetLabel.preferredMaxLayoutWidth = tweetLabel.frame.size.width
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -16,6 +16,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 80
+        
         // Eventually want to do Tweet.homeTimelineWithParams
         TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
             self.tweets = tweets
