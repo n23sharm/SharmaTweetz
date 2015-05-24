@@ -16,7 +16,7 @@ let userDidLogoutNotification = "userDidLogoutNotification"
 class User: NSObject {
     var name: String?
     var screenname: String?
-    var profileImageUrl: String?
+    var profileImageUrl: NSURL?
     var tagline: String?
     var dictionary: NSDictionary?
     
@@ -24,7 +24,14 @@ class User: NSObject {
         self.dictionary = dictionary
         name = dictionary["name"] as? String
         screenname = dictionary["screen_name"] as? String
-        profileImageUrl = dictionary["profile_image_url"] as? String
+        
+        let imageURLString = dictionary["profile_image_url"] as? String
+        if imageURLString != nil {
+            profileImageUrl = NSURL(string: imageURLString!)!
+        } else {
+            profileImageUrl = nil
+        }
+        
         tagline = dictionary["tagline"] as? String
     }
     
@@ -42,7 +49,6 @@ class User: NSObject {
                     var dictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary
                     _currentUser = User(dictionary: dictionary)
                 }
-        
             }
             return _currentUser
         }
