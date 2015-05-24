@@ -14,6 +14,7 @@ class Tweet: NSObject {
     var createdAtString: String?
     var createdAt: NSDate?
     var retweetCount: Int?
+    var favouriteCount: Int?
     var isRetweeted: Boolean?
     
     init(dictionary: NSDictionary) {
@@ -26,6 +27,7 @@ class Tweet: NSObject {
         createdAt = formatter.dateFromString(createdAtString!)
         
         retweetCount = dictionary["retweet_count"] as? Int
+        favouriteCount = dictionary["favorite_count"] as? Int
         isRetweeted = dictionary["retweeted"] as? Boolean
     }
     
