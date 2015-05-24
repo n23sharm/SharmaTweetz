@@ -16,9 +16,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSu-I4-BrN">
-                                <rect key="frame" x="328" y="221" width="121" height="30"/>
-                                <state key="normal" title="Login with Twitter">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bird" translatesAutoresizingMaskIntoConstraints="NO" id="cDs-IJ-GcL">
+                                <rect key="frame" x="188" y="80" width="225" height="225"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSu-I4-BrN">
+                                <rect key="frame" x="229" y="335" width="142" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Login to Twitter">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -26,7 +31,19 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.11027642798812121" green="0.7062926177743778" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="NSu-I4-BrN" secondAttribute="centerX" id="0BZ-gL-Smo"/>
+                            <constraint firstItem="NSu-I4-BrN" firstAttribute="top" secondItem="cDs-IJ-GcL" secondAttribute="bottom" constant="30" id="6Ek-mi-baC"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="NSu-I4-BrN" secondAttribute="bottom" constant="211" id="EIg-eD-2Rt"/>
+                            <constraint firstAttribute="centerX" secondItem="cDs-IJ-GcL" secondAttribute="centerX" id="I5d-Ys-DzG"/>
+                            <constraint firstItem="cDs-IJ-GcL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="80" id="bLv-rI-xCN"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="EIg-eD-2Rt"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <segue destination="ksD-WB-63b" kind="presentation" identifier="loginSegue" id="8NC-eN-HuW"/>
@@ -34,6 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="421" y="226"/>
         </scene>
         <!--Tweets View Controller-->
         <scene sceneID="ZRX-8c-Tpp">
@@ -65,4 +83,7 @@
             <point key="canvasLocation" x="985" y="923"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bird" width="225" height="225"/>
+    </resources>
 </document>
