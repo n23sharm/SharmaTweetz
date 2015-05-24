@@ -37,15 +37,62 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
     
-    func retweet(id: String!, completion: (Tweet?, error: NSError?) -> ()) {
-        POST("1.1/statuses/retweet/\(id).json", parameters: id,
+    func favourite(id: String!, completion: (Tweet?, error: NSError?) -> ()) {
+        var params = ["id":id]
+        
+        POST("1.1/favorites/create.json", parameters: params,
             success: { (operation:AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                var tweet = Tweet.tweetsWithObject(response as! NSDictionary)
-             //   completion(tweet, error: nil)
+                println("favourited successfully!")
+                var tweet = Tweet.tweetWithObject(response as! NSDictionary)
+                completion(tweet, error: nil)
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println("did not favourite successfully")
                 completion(nil, error: error)
         })
+    }
     
+    func unfavourite(id: String!, completion: (Tweet?, error: NSError?) -> ()) {
+        var params = ["id":id]
+        
+        POST("1.1/favorites/destroy.json", parameters: params,
+            success: { (operation:AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                println("unfavourited successfully!")
+                var tweet = Tweet.tweetWithObject(response as! NSDictionary)
+                completion(tweet, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println("did not unfavourited successfully")
+                completion(nil, error: error)
+        })
+    }
+
+
+    
+    func retweet(id: String!, completion: (Tweet?, error: NSError?) -> ()) {
+        var params = ["id":id]
+        
+        POST("1.1/statuses/retweet/\(id).json", parameters: params,
+            success: { (operation:AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                println("retweeted successfully!")
+                var tweet = Tweet.tweetWithObject(response as! NSDictionary)
+                completion(tweet, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                 println("did not retweeted successfully")
+                completion(nil, error: error)
+        })
+    }
+    
+    func unretweet(id: String!, completion: (Tweet?, error: NSError?) -> ()) {
+        var params = ["id":id]
+        
+        POST("1.1/statuses/destroy/\(id).json", parameters: params,
+            success: { (operation:AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                println("unretweeted successfully!")
+                var tweet = Tweet.tweetWithObject(response as! NSDictionary)
+                completion(tweet, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println("did not unretweeted successfully")
+                completion(nil, error: error)
+        })
     }
     
     func homeTimelineWithParams(params: NSDictionary?, completion: ([Tweet]?, error: NSError?) -> ()) {

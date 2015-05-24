@@ -27,11 +27,18 @@ class TweetCell: UITableViewCell {
             usernameLabel.text = "@" + user.screenname!
             tweetLabel.text = tweet.text
             
-            let retweeted = tweet.isRetweeted as Boolean!
-            if (retweeted != nil) {
-                self.retweetImageView.image = UIImage(contentsOfFile: "retweet_on.png")
+            let retweeted = tweet.isRetweeted! as Bool!
+            if (retweeted ?? false) {
+                self.retweetImageView.image = UIImage(named: "retweet_on")
             } else {
-                self.retweetImageView.image = UIImage(named: "retweet_default.png")
+                self.retweetImageView.image = UIImage(named: "retweet_default")
+            }
+            
+            let favourited = tweet.isFavourited! as Bool!
+            if (favourited ?? false) {
+                self.favouriteImageView.image = UIImage(named: "favorite_on")
+            } else {
+                self.favouriteImageView.image = UIImage(named: "favorite_default")
             }
         }
     }
@@ -50,23 +57,47 @@ class TweetCell: UITableViewCell {
         super.layoutSubviews()
         tweetLabel.preferredMaxLayoutWidth = tweetLabel.frame.size.width
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     func replyClicked() {
         println("reply button touched")
     }
     
     func retweetClicked() {
-        println("retweet button touched")
+        let retweeted = tweet!.isRetweeted! as Bool!
+        if (retweeted ?? false) {
+            /*
+            TwitterClient.sharedInstance.unretweet(tweet.retweetIdStr, completion: { (tweet, error) -> () in
+                if tweet != nil {
+                    self.tweet = tweet
+                }
+            })
+            */
+        } else {
+            TwitterClient.sharedInstance.retweet(tweet.idStr, completion: { (tweet, error) -> () in
+                if tweet != nil {
+                    self.tweet = tweet
+                }
+            })
+        }
+       
     }
     
     func favouriteClicked() {
         println("favourite button touched")
+        let favourited = tweet!.isFavourited! as Bool!
+        if (favourited ?? false) {
+            TwitterClient.sharedInstance.unfavourite(tweet.idStr, completion: { (tweet, error) -> () in
+                if tweet != nil {
+                    self.tweet = tweet
+                }
+            })
+        } else {
+            TwitterClient.sharedInstance.favourite(tweet.idStr, completion: { (tweet, error) -> () in
+                if tweet != nil {
+                    self.tweet = tweet
+                }
+            })
+        }
     }
 
 }

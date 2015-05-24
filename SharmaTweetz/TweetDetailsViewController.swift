@@ -38,16 +38,11 @@ class TweetDetailsViewController: UIViewController {
         usernameLabel.text = "@" + user.screenname!
         tweetLabel.text = tweet.text
         dateLabel.text = tweet.createdAtString
-        retweetCountLabel.text = String(stringInterpolationSegment: tweet.retweetCount!)
-        favouriteCountLabel.text = String(stringInterpolationSegment: tweet.favouriteCount!)
         
-        let retweeted = tweet.isRetweeted as Boolean!
-        if (retweeted != nil) {
-            self.retweetImageView.image = UIImage(contentsOfFile: "retweet_on.png")
-        } else {
-            self.retweetImageView.image = UIImage(named: "retweet_default.png")
-        }
-
+        let retweetCount = tweet.retweetCount!
+        let favouriteCount = tweet.favouriteCount!
+        retweetCountLabel.text = String(stringInterpolationSegment: retweetCount)
+        favouriteCountLabel.text = String(stringInterpolationSegment: favouriteCount)
     }
 
     override func didReceiveMemoryWarning() {
