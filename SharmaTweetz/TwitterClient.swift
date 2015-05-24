@@ -24,6 +24,19 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         return Static.instance
     }
     
+    func tweet(status: String!, completion: (Tweet?, error: NSError?) -> ()) {
+        var params = ["status":status]
+        
+        POST("1.1/statuses/update.json", parameters: params,
+            success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                println("success in tweeting!")
+                completion(response as? Tweet, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println("failed in tweeting!")
+                completion(nil, error: error)
+        })
+    }
+    
     func retweet(id: String!, completion: (Tweet?, error: NSError?) -> ()) {
         POST("1.1/statuses/retweet/\(id).json", parameters: id,
             success: { (operation:AFHTTPRequestOperation!, response: AnyObject!) -> Void in

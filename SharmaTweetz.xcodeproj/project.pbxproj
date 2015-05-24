@@ -19,6 +19,7 @@
 		3A7E41361B112B7F00C5FA90 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E41351B112B7F00C5FA90 /* Tweet.swift */; };
 		3A7E41391B1140F300C5FA90 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E41381B1140F300C5FA90 /* TweetsViewController.swift */; };
 		3A7E413B1B115DC600C5FA90 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E413A1B115DC600C5FA90 /* TweetCell.swift */; };
+		3A7E413D1B124F6100C5FA90 /* ComposeTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E413C1B124F6100C5FA90 /* ComposeTweetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		3A7E41351B112B7F00C5FA90 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		3A7E41381B1140F300C5FA90 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
 		3A7E413A1B115DC600C5FA90 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		3A7E413C1B124F6100C5FA90 /* ComposeTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTweetViewController.swift; sourceTree = "<group>"; };
 		CBE223BACE9CA68D4CC9023E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81348A973EABFD4B250C590 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E1315558D7867C2FDFEB0B16 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			children = (
 				3A7E410E1B10FD5500C5FA90 /* ViewController.swift */,
 				3A7E41381B1140F300C5FA90 /* TweetsViewController.swift */,
+				3A7E413C1B124F6100C5FA90 /* ComposeTweetViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			files = (
 				3A7E41341B112B7100C5FA90 /* User.swift in Sources */,
 				3A7E413B1B115DC600C5FA90 /* TweetCell.swift in Sources */,
+				3A7E413D1B124F6100C5FA90 /* ComposeTweetViewController.swift in Sources */,
 				3A7E41361B112B7F00C5FA90 /* Tweet.swift in Sources */,
 				3A7E41391B1140F300C5FA90 /* TweetsViewController.swift in Sources */,
 				3A7E410F1B10FD5500C5FA90 /* ViewController.swift in Sources */,
