@@ -37,6 +37,20 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
     
+    func reply(status: String!, replyToId: String!, completion: (Tweet?, error: NSError?) -> ()) {
+        var params = ["status":status, "in_reply_to_status_id" : replyToId]
+        
+        POST("1.1/statuses/update.json", parameters: params,
+            success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                println("success in tweeting!")
+                completion(response as? Tweet, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println("failed in tweeting!")
+                completion(nil, error: error)
+        })
+    }
+    
+    
     func favourite(id: String!, completion: (Tweet?, error: NSError?) -> ()) {
         var params = ["id":id]
         
@@ -64,8 +78,6 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 completion(nil, error: error)
         })
     }
-
-
     
     func retweet(id: String!, completion: (Tweet?, error: NSError?) -> ()) {
         var params = ["id":id]

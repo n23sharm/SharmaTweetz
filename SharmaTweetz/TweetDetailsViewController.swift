@@ -43,26 +43,52 @@ class TweetDetailsViewController: UIViewController {
         let favouriteCount = tweet.favouriteCount!
         retweetCountLabel.text = String(stringInterpolationSegment: retweetCount)
         favouriteCountLabel.text = String(stringInterpolationSegment: favouriteCount)
-    }
+        
+        
+        replyImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "replyClicked"))
+        retweetImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "retweetClicked"))
+        favouriteImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "favouriteClicked"))
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    func replyClicked() {
+        
+    }
+    
+    func retweetClicked() {
+        let retweeted = tweet!.isRetweeted! as Bool!
+        if (retweeted ?? false) {
+        } else {
+            TwitterClient.sharedInstance.retweet(tweet.idStr, completion: { (tweet, error) -> () in
+                if tweet != nil {
+                    self.tweet = tweet
+                    self.retweetImageView.image = UIImage(named: "retweet_on")
+                }
+            })
+        }
+    }
+    
+    func favouriteClicked() {
+        let favourited = tweet!.isFavourited! as Bool!
+        if (favourited ?? false) {
+            TwitterClient.sharedInstance.unfavourite(tweet.idStr, completion: { (tweet, error) -> () in
+                if tweet != nil {
+                    self.tweet = tweet
+                    self.favouriteImageView.image = UIImage(named: "favorite_default")
+                }
+            })
+        } else {
+            TwitterClient.sharedInstance.favourite(tweet.idStr, completion: { (tweet, error) -> () in
+                if tweet != nil {
+                    self.tweet = tweet
+                    self.favouriteImageView.image = UIImage(named: "favorite_on")
+                }
+            })
+        }
+    }
+
 
     @IBAction func onBack(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

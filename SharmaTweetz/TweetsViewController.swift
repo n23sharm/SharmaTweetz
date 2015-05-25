@@ -29,7 +29,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         navigationController?.navigationBar.topItem?.rightBarButtonItem?.tintColor = UIColor.whiteColor()
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = 200
         
         fetchTweets(self)
     }
@@ -63,6 +63,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
         cell.tweet = tweets[indexPath.row]
+      //  cell.replyImageView.addTarget(self, action: "showReplyAlert", forControlEvents:UIControlEvents.TouchUpInside)
         return cell
     }
     
@@ -76,6 +77,17 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let tweetDetailsViewController = navigationController.topViewController as! TweetDetailsViewController
 
         tweetDetailsViewController.tweet = tweet
+    }
+    
+    func showReplyDialog() {
+        println("reply button touched")
+        var alert : UIAlertController = UIAlertController(title: "Alert", message: "Something got wrong", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "One", style: UIAlertActionStyle.Default, handler: { (alertAction:UIAlertAction!) -> Void in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 
 

@@ -58,10 +58,7 @@ class TweetCell: UITableViewCell {
         tweetLabel.preferredMaxLayoutWidth = tweetLabel.frame.size.width
     }
     
-    func replyClicked() {
-        println("reply button touched")
-    }
-    
+
     func retweetClicked() {
         let retweeted = tweet!.isRetweeted! as Bool!
         if (retweeted ?? false) {
