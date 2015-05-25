@@ -47,7 +47,6 @@ class TweetCell: UITableViewCell {
         super.awakeFromNib()
         tweetLabel.preferredMaxLayoutWidth = tweetLabel.frame.size.width
         
-        replyImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "replyClicked"))
         retweetImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "retweetClicked"))
         favouriteImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "favouriteClicked"))
 
@@ -62,13 +61,6 @@ class TweetCell: UITableViewCell {
     func retweetClicked() {
         let retweeted = tweet!.isRetweeted! as Bool!
         if (retweeted ?? false) {
-            /*
-            TwitterClient.sharedInstance.unretweet(tweet.retweetIdStr, completion: { (tweet, error) -> () in
-                if tweet != nil {
-                    self.tweet = tweet
-                }
-            })
-            */
         } else {
             TwitterClient.sharedInstance.retweet(tweet.idStr, completion: { (tweet, error) -> () in
                 if tweet != nil {

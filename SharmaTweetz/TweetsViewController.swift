@@ -12,6 +12,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
 
     var tweets: [Tweet]!
     var refreshControl: UIRefreshControl!
+    var replyTextField: UITextField?
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -35,7 +36,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func fetchTweets(sender:AnyObject) {
-        // Eventually want to do Tweet.homeTimelineWithParams
         TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
@@ -47,6 +47,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func onLogout(sender: AnyObject) {
         User.currentUser?.logout()
 
@@ -62,32 +63,29 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
-        cell.tweet = tweets[indexPath.row]
-      //  cell.replyImageView.addTarget(self, action: "showReplyAlert", forControlEvents:UIControlEvents.TouchUpInside)
+        let currentTweet =  tweets[indexPath.row]
+        cell.tweet = currentTweet
+        cell.replyImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "replyClicked"))
         return cell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let cell = sender as! UITableViewCell
-        let indexPath = self.tableView.indexPathForCell(cell)
+        let cell = sender as? UITableViewCell
         
-        let tweet = tweets![indexPath!.row] as Tweet
+        if (cell != nil) {
+            let indexPath = self.tableView.indexPathForCell(cell!)
         
-        let navigationController = segue.destinationViewController as! UINavigationController
-        let tweetDetailsViewController = navigationController.topViewController as! TweetDetailsViewController
+            let tweet = tweets![indexPath!.row] as Tweet
+        
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let tweetDetailsViewController = navigationController.topViewController as! TweetDetailsViewController
 
-        tweetDetailsViewController.tweet = tweet
+            tweetDetailsViewController.tweet = tweet
+        }
     }
     
-    func showReplyDialog() {
-        println("reply button touched")
-        var alert : UIAlertController = UIAlertController(title: "Alert", message: "Something got wrong", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        alert.addAction(UIAlertAction(title: "One", style: UIAlertActionStyle.Default, handler: { (alertAction:UIAlertAction!) -> Void in
-            alert.dismissViewControllerAnimated(true, completion: nil)
-        }))
-        
-        self.presentViewController(alert, animated: true, completion: nil)
+    func replyClicked() {
+
     }
 
 

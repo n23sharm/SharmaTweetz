@@ -22,6 +22,7 @@ class TweetDetailsViewController: UIViewController {
     @IBOutlet weak var favouriteCountLabel: UILabel!
     
     var tweet: Tweet!
+    var replyTextField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,20 @@ class TweetDetailsViewController: UIViewController {
         favouriteCountLabel.text = String(stringInterpolationSegment: favouriteCount)
         
         
+        let retweeted = tweet.isRetweeted! as Bool!
+        if (retweeted ?? false) {
+            self.retweetImageView.image = UIImage(named: "retweet_on")
+        } else {
+            self.retweetImageView.image = UIImage(named: "retweet_default")
+        }
+        
+        let favourited = tweet.isFavourited! as Bool!
+        if (favourited ?? false) {
+            self.favouriteImageView.image = UIImage(named: "favorite_on")
+        } else {
+            self.favouriteImageView.image = UIImage(named: "favorite_default")
+        }
+        
         replyImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "replyClicked"))
         retweetImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "retweetClicked"))
         favouriteImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "favouriteClicked"))
@@ -52,7 +67,32 @@ class TweetDetailsViewController: UIViewController {
     }
     
     func replyClicked() {
+        var alert : UIAlertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            
+        alert.addAction(UIAlertAction(title: "Reply", style: UIAlertActionStyle.Default, handler:{ (alertAction:UIAlertAction!) -> Void in
+            
+            let user = self.tweet.user
+            let replyStatus = "@\((user?.screenname)!) \((self.replyTextField?.text)!)"
+            
+            TwitterClient.sharedInstance.reply(replyStatus, replyToId: self.tweet.idStr, completion: { (tweet, error) -> () in
+                if tweet != nil {
+                    self.replyImageView.image = nil
+                }
+            })
+            
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }))
         
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler:{ (alertAction:UIAlertAction!) -> Void in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }))
+            
+        alert.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            textField.placeholder = "Write your reply"
+            self.replyTextField = textField
+        }
+            
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func retweetClicked() {

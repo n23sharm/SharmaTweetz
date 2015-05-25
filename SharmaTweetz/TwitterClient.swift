@@ -42,10 +42,11 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         
         POST("1.1/statuses/update.json", parameters: params,
             success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                println("success in tweeting!")
+                println("success in replying!")
+                var tweet = Tweet.tweetWithObject(response as! NSDictionary)
                 completion(response as? Tweet, error: nil)
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println("failed in tweeting!")
+                println("failed in replying")
                 completion(nil, error: error)
         })
     }
