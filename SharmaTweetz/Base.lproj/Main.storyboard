@@ -482,6 +482,72 @@
             </objects>
             <point key="canvasLocation" x="2693" y="623"/>
         </scene>
+        <!--Side Panel View Controller-->
+        <scene sceneID="boO-wn-HnJ">
+            <objects>
+                <viewController storyboardIdentifier="LeftViewController" id="dfj-Zg-6vc" customClass="SidePanelViewController" customModule="SharmaTweetz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Igt-ju-BXE"/>
+                        <viewControllerLayoutGuide type="bottom" id="c7v-32-cgL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9bO-fY-GOM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKM-IH-X6p">
+                                <rect key="frame" x="10" y="30" width="44" height="30"/>
+                                <state key="normal" title="Profile">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33d-ah-fc5">
+                                <rect key="frame" x="10" y="92" width="41" height="30"/>
+                                <state key="normal" title="Home">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UN-qp-4RC">
+                                <rect key="frame" x="10" y="154" width="64" height="30"/>
+                                <state key="normal" title="Mentions">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VkT-KK-exy">
+                                <rect key="frame" x="0.0" y="75" width="600" height="2"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="kMw-3S-YEd"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JB3-op-w9M">
+                                <rect key="frame" x="0.0" y="137" width="600" height="2"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="HwA-Nd-Yc2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1UN-qp-4RC" firstAttribute="top" secondItem="JB3-op-w9M" secondAttribute="bottom" constant="15" id="8Md-q4-OkM"/>
+                            <constraint firstItem="DKM-IH-X6p" firstAttribute="leading" secondItem="9bO-fY-GOM" secondAttribute="leading" constant="10" id="DUB-TK-L3J"/>
+                            <constraint firstItem="VkT-KK-exy" firstAttribute="top" secondItem="DKM-IH-X6p" secondAttribute="bottom" constant="15" id="M6K-a7-xzo"/>
+                            <constraint firstItem="JB3-op-w9M" firstAttribute="leading" secondItem="9bO-fY-GOM" secondAttribute="leading" id="OAM-NZ-7aD"/>
+                            <constraint firstItem="33d-ah-fc5" firstAttribute="leading" secondItem="DKM-IH-X6p" secondAttribute="leading" id="R1q-YM-gu7"/>
+                            <constraint firstItem="DKM-IH-X6p" firstAttribute="top" secondItem="Igt-ju-BXE" secondAttribute="bottom" constant="10" id="Wq3-PE-09O"/>
+                            <constraint firstAttribute="trailing" secondItem="JB3-op-w9M" secondAttribute="trailing" id="YJh-c0-EUJ"/>
+                            <constraint firstAttribute="trailing" secondItem="VkT-KK-exy" secondAttribute="trailing" id="YqW-uM-bo0"/>
+                            <constraint firstItem="JB3-op-w9M" firstAttribute="top" secondItem="33d-ah-fc5" secondAttribute="bottom" constant="15" id="ZdC-Vg-IGK"/>
+                            <constraint firstItem="DKM-IH-X6p" firstAttribute="leading" secondItem="1UN-qp-4RC" secondAttribute="leading" id="ccv-yJ-YAb"/>
+                            <constraint firstItem="33d-ah-fc5" firstAttribute="top" secondItem="VkT-KK-exy" secondAttribute="bottom" constant="15" id="d04-td-kkV"/>
+                            <constraint firstItem="VkT-KK-exy" firstAttribute="leading" secondItem="9bO-fY-GOM" secondAttribute="leading" id="wuC-wE-kaH"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XOj-cI-Gr0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301" y="-459"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="VkP-aX-1ay">
             <objects>

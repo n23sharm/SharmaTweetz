@@ -19,8 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if User.currentUser != nil {
             // Go to the logged in screen
+            let containerViewController = ContainerViewController()
+            
+            window!.rootViewController = containerViewController
+            window!.makeKeyAndVisible()
+            
+            /*
             var vc = storyboard.instantiateViewControllerWithIdentifier("TweetsViewNavigationController") as! UIViewController
             window?.rootViewController = vc
+            */
         }
         return true
     }

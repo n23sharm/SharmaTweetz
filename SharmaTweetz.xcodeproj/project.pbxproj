@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		07D3DAFE77180723A5126FAC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE223BACE9CA68D4CC9023E /* libPods.a */; };
+		3A48A3FB1B1B7C0A00A5E32B /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48A3FA1B1B7C0A00A5E32B /* SidePanelViewController.swift */; };
+		3A48A3FD1B1B7DB100A5E32B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48A3FC1B1B7DB100A5E32B /* ContainerViewController.swift */; };
 		3A7E410D1B10FD5500C5FA90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E410C1B10FD5500C5FA90 /* AppDelegate.swift */; };
 		3A7E410F1B10FD5500C5FA90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E410E1B10FD5500C5FA90 /* ViewController.swift */; };
 		3A7E41121B10FD5500C5FA90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7E41101B10FD5500C5FA90 /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A48A3FA1B1B7C0A00A5E32B /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
+		3A48A3FC1B1B7DB100A5E32B /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		3A7E41071B10FD5500C5FA90 /* SharmaTweetz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharmaTweetz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7E410B1B10FD5500C5FA90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A7E410C1B10FD5500C5FA90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 				3A7E41381B1140F300C5FA90 /* TweetsViewController.swift */,
 				3A7E413C1B124F6100C5FA90 /* ComposeTweetViewController.swift */,
 				3A7E413E1B126B8200C5FA90 /* TweetDetailsViewController.swift */,
+				3A48A3FA1B1B7C0A00A5E32B /* SidePanelViewController.swift */,
+				3A48A3FC1B1B7DB100A5E32B /* ContainerViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -320,6 +326,8 @@
 			files = (
 				3A7E41341B112B7100C5FA90 /* User.swift in Sources */,
 				3A7E413B1B115DC600C5FA90 /* TweetCell.swift in Sources */,
+				3A48A3FB1B1B7C0A00A5E32B /* SidePanelViewController.swift in Sources */,
+				3A48A3FD1B1B7DB100A5E32B /* ContainerViewController.swift in Sources */,
 				3A7E413D1B124F6100C5FA90 /* ComposeTweetViewController.swift in Sources */,
 				3A7E41361B112B7F00C5FA90 /* Tweet.swift in Sources */,
 				3A7E413F1B126B8200C5FA90 /* TweetDetailsViewController.swift in Sources */,
