@@ -18,6 +18,7 @@ class ContainerViewController: UIViewController {
     
     var centerNavigationController: UINavigationController!
     var centerViewController: TweetsViewController!
+    var containerViewController: ContainerViewController!
     var currentState: SlideOutState = .BothCollapsed {
         didSet {
             let shouldShowShadow = currentState != .BothCollapsed
@@ -31,7 +32,6 @@ class ContainerViewController: UIViewController {
         super.viewDidLoad()
         
         centerViewController = UIStoryboard.centerViewController()
-        centerViewController.delegate = self
         
         centerNavigationController = UINavigationController(rootViewController: centerViewController)
         view.addSubview(centerNavigationController.view)
@@ -47,9 +47,14 @@ class ContainerViewController: UIViewController {
     }
 }
 
-// MARK: CenterViewController delegate
-
-extension ContainerViewController: CenterViewControllerDelegate {
+extension ContainerViewController: SidePanelViewControllerDelegate {
+    func itemSelected(item: String!) {
+        if (item == "Profile") {
+            let vc: AnyObject! = UIStoryboard.profileViewController()
+            self.centerNavigationController.viewControllers = [vc]
+            toggleLeftPanel()
+        }
+    }
     
     func toggleLeftPanel() {
         let notAlreadyExpanded = (currentState != .LeftPanelExpanded)
@@ -70,13 +75,11 @@ extension ContainerViewController: CenterViewControllerDelegate {
     }
     
     func addChildSidePanelController(sidePanelController: SidePanelViewController) {
+        sidePanelController.delegate = self
         view.insertSubview(sidePanelController.view, atIndex: 0)
         
         addChildViewController(sidePanelController)
         sidePanelController.didMoveToParentViewController(self)
-    }
-    
-    func addRightPanelViewController() {
     }
     
     func animateLeftPanel(#shouldExpand: Bool) {
@@ -98,9 +101,6 @@ extension ContainerViewController: CenterViewControllerDelegate {
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
             self.centerNavigationController.view.frame.origin.x = targetPosition
             }, completion: completion)
-    }
-    
-    func animateRightPanel(#shouldExpand: Bool) {
     }
     
     func showShadowForCenterViewController(shouldShowShadow: Bool) {
@@ -151,5 +151,9 @@ private extension UIStoryboard {
     
     class func centerViewController() -> TweetsViewController? {
         return mainStoryboard().instantiateViewControllerWithIdentifier("TweetsViewController") as? TweetsViewController
+    }
+    
+    class func profileViewController() -> ProfileViewController? {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("ProfileViewController") as? ProfileViewController
     }
 }

@@ -8,19 +8,13 @@
 
 import UIKit
 
-@objc
-protocol CenterViewControllerDelegate {
-    optional func toggleLeftPanel()
-    optional func collapseSidePanel()
-}
+
 
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var tweets: [Tweet]!
     var refreshControl: UIRefreshControl!
     var replyTextField: UITextField?
-    
-    var delegate: CenterViewControllerDelegate?
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -95,6 +89,4 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     func replyClicked() {
 
     }
-
-
 }
