@@ -13,7 +13,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var followersLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +22,9 @@ class ProfileViewController: UIViewController {
         nameLabel.text = user!.name
         usernameLabel.text = user!.screenname
         profileImageView.setImageWithURL(user?.profileImageUrl)
+        descriptionLabel.text = user!.descriptionText
+        followersLabel.text = "\(user!.followerCount!) followers"
+        //String(stringInterpolationSegment: retweetCount)user!.followerCount
     }
 
     override func didReceiveMemoryWarning() {

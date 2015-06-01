@@ -53,6 +53,10 @@ extension ContainerViewController: SidePanelViewControllerDelegate {
             let vc: AnyObject! = UIStoryboard.profileViewController()
             self.centerNavigationController.viewControllers = [vc]
             toggleLeftPanel()
+        } else if (item == "Home") {
+            let vc: AnyObject! = UIStoryboard.centerViewController()
+            self.centerNavigationController.viewControllers = [vc]
+            toggleLeftPanel()
         }
     }
     

@@ -19,6 +19,8 @@ class User: NSObject {
     var profileImageUrl: NSURL?
     var tagline: String?
     var dictionary: NSDictionary?
+    var descriptionText : String?
+    var followerCount: Int?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -33,6 +35,8 @@ class User: NSObject {
         }
         
         tagline = dictionary["tagline"] as? String
+        descriptionText = dictionary["description"] as? String
+        followerCount = dictionary["followers_count"] as? Int
     }
     
     func logout() {
