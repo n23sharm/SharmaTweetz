@@ -57,6 +57,10 @@ extension ContainerViewController: SidePanelViewControllerDelegate {
             let vc: AnyObject! = UIStoryboard.centerViewController()
             self.centerNavigationController.viewControllers = [vc]
             toggleLeftPanel()
+        } else if (item == "Mentions") {
+            let vc: AnyObject! = UIStoryboard.mentionsViewController()
+            self.centerNavigationController.viewControllers = [vc]
+            toggleLeftPanel()
         }
     }
     
@@ -159,5 +163,9 @@ private extension UIStoryboard {
     
     class func profileViewController() -> ProfileViewController? {
         return mainStoryboard().instantiateViewControllerWithIdentifier("ProfileViewController") as? ProfileViewController
+    }
+    
+    class func mentionsViewController() -> MentionsViewController? {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("MentionsViewController") as? MentionsViewController
     }
 }

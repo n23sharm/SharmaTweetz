@@ -37,6 +37,7 @@ class SidePanelViewController: UIViewController {
     }
     
     @IBAction func mentionsClicked(sender: AnyObject) {
+        delegate?.itemSelected("Mentions")
     }
 
 
